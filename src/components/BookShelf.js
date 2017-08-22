@@ -11,6 +11,7 @@ class BookShelf extends React.Component {
 
   render () {
     const { shelfContents } = this.state
+    const { shelfTitle } = this.props
     const bookElements = shelfContents.map((book) => (
       <li key={book.id}>
         <Book bookData={book} />
@@ -19,7 +20,7 @@ class BookShelf extends React.Component {
 
     return (
       <div className='bookshelf'>
-        <h2 className='bookshelf-title'>Currently Reading</h2>
+        <h2 className='bookshelf-title'>{ shelfTitle }</h2>
         <div className='bookshelf-books'>
           <ol className='books-grid'>
             { bookElements }
@@ -33,5 +34,6 @@ class BookShelf extends React.Component {
 export default BookShelf
 
 BookShelf.propTypes = {
-  shelfContents: PropTypes.array.isRequired
+  shelfContents: PropTypes.array.isRequired,
+  shelfTitle: PropTypes.string.isRequired
 }

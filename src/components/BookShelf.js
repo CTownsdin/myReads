@@ -155,7 +155,7 @@ class BookShelf extends React.Component {
 
   render () {
     const bookElements = mockBooksArray.map((book) => (
-      <li>
+      <li key={book.id}>
         <Book bookData={book} />
       </li>
     ))

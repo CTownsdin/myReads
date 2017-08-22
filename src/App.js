@@ -1,5 +1,5 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'  // TODO:
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './components/BookShelf'
 
@@ -149,7 +149,15 @@ const mockBooksArray = [{
 class App extends React.Component {
   constructor () {
     super()
-    this.state = { showSearchPage: true }
+    this.state = { 
+      showSearchPage: true, 
+      bookState: [] 
+    }
+  }
+
+  componentDidMount () {
+    BooksAPI.getAll()
+      .then((bookState) => this.setState({ bookState }))
   }
 
   render () {

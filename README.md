@@ -79,3 +79,10 @@ A book example JSON object
 `$ npm install` or `$ yarn install`   
 `$ npm run start` or `$ yarn start`    
 
+### TODO Next:
+fetching books from BooksAPI
+routing
+
+### ideas for extras
+book animations
+book details page

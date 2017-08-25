@@ -8,9 +8,7 @@ class App extends React.Component {
     super()
     this.state = {
       showSearchPage: true,
-      currIds: [],
-      wantIds: [],
-      readIds: []
+      allBooks: []
     }
     this.handleMovingBooks = this.handleMovingBooks.bind(this)
   }
@@ -18,34 +16,21 @@ class App extends React.Component {
   componentDidMount() {
     BooksAPI.getAll()
       .then((allBooks) => {
-        const currIds = allBooks.filter((b) => b.shelf === 'currentlyReading').map((b) => b.id)
-        const wantIds = allBooks.filter((b) => b.shelf === 'wantToRead').map((b) => b.id)
-        const readIds = allBooks.filter((b) => b.shelf === 'read').map((b) => b.id)
-        this.setState({ currIds, wantIds, readIds })
+        this.setState({ allBooks })
       })
   }
 
-  // TODO:
-  handleMovingBooks(bookData, e) {
-    e.preventDefault()  // check e for e.target.bookData  ?
-    console.log(e.target.value)
-    console.log(bookData)
-    // console.log(book.id)  // Y
-    // console.log(e.target.value)  // Y
-
-    // BooksAPI.update(book, e.target.value)
-    //   .then((updateRes) => this.setState({
-    //     currIds: updateRes.currentlyReading,
-    //     wantIds: updateRes.wantToRead,
-    //     readIds: updateRes.read
-    //   }))
+  handleMovingBooks(){
+    console.log('imagine moving books')
   }
 
-  handleMoveABook
-
   render() {
-    const { currIds, wantIds, readIds } = this.state
+    const { allBooks } = this.state
 
+    const currBooks = allBooks.filter((book) => book.shelf === 'currentlyReading')
+    const wantBooks = allBooks.filter((book) => book.shelf === 'wantToRead')
+    const readBooks = allBooks.filter((book) => book.shelf === 'read')
+    
     return (
       <div className='app'>
         {this.state.showSearchPage ? (
@@ -67,9 +52,15 @@ class App extends React.Component {
               </div>
               <div className='list-books-content'>
                 <div>
-                  <BookShelf shelfContents={currIds} shelfTitle='Currently Reading' handleMovingBooks={this.handleMovingBooks} />
-                  <BookShelf shelfContents={wantIds} shelfTitle='Want to Read' handleMovingBooks={this.handleMovingBooks} />
-                  <BookShelf shelfContents={readIds} shelfTitle='Read' handleMovingBooks={this.handleMovingBooks} />
+                  <BookShelf shelfContents={currBooks} 
+                    shelfTitle='Currently Reading' 
+                    handleMovingBooks={this.handleMovingBooks} />
+                  <BookShelf shelfContents={wantBooks} 
+                    shelfTitle='Want to Read' 
+                    handleMovingBooks={this.handleMovingBooks} />
+                  <BookShelf shelfContents={readBooks} 
+                    shelfTitle='Read' 
+                    handleMovingBooks={this.handleMovingBooks} />
                 </div>
               </div>
               <div className='open-search'>

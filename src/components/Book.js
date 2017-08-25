@@ -7,16 +7,17 @@ class Book extends React.Component{
   }
 
   render(){
+    const { bookData } = this.props
     return (
       <div className='book'>
         <div className='book-top'>
           <div className='book-cover' style={{
             width: 128,
             height: 192,
-            backgroundImage: `url(${this.props.bookData.imageLinks.smallThumbnail})`
+            backgroundImage: `url(${bookData.imageLinks.smallThumbnail})`
           }} />
           <div className='book-shelf-changer'>
-            <select value={this.props.bookData.shelf} onChange={this.props.handleMovingBooks(this.props.bookData)} >
+            <select value={bookData.shelf} onChange={this.props.handleMovingBooks} >
               <option value='none' disabled>Move to...</option>
               <option value='currentlyReading'>Currently Reading</option>
               <option value='wantToRead'>Want to Read</option>
@@ -25,8 +26,8 @@ class Book extends React.Component{
             </select>
           </div>
         </div>
-        <div className='book-title'>{this.props.bookData.title}</div>
-        <div className='book-authors'>{this.props.bookData.authors[0]}}</div>
+        <div className='book-title'>{bookData.title}</div>
+        <div className='book-authors'>{bookData.authors[0]}}</div>
       </div>
     )
   }

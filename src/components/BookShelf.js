@@ -1,22 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
 
-// BookShelf - a branch component, it will have local state which is the contents of the book shelf
 class BookShelf extends React.Component {
-  constructor (props) {
+  constructor (props) {  // this seems to only run one time.
     super(props)
-    this.state = { shelfContents: this.props.shelfContents }
+    this.state = { 
+      bookIDs: this.props.shelfContents,
+      bookObjects: []
+    }
+  }
+
+  componentWillMount () {
+    const { bookIDs, bookObjects } = this.state
+
+    let newBookObjects = []
+
+    bookIDs.forEach((id) => {
+      BooksAPI.get(id).then((book) => newBookObjects.push(book))
+      .then(() => this.setState({ bookObjects: newBookObjects }))
+    })
   }
 
   render () {
-    const { shelfContents } = this.state
-    const { shelfTitle } = this.props
-    const bookElements = shelfContents.map((book) => (
-      <li key={book.id}>
-        <Book bookData={book} />
+    const bookElements = this.state.bookObjects.map((bookObj) => (    // for each bookObject create an element
+      <li key={bookObj.id}>
+        <Book bookData={bookObj} handleMovingBooks={this.props.handleMovingBooks}/>
       </li>
     ))
+
+    const { shelfTitle } = this.props
 
     return (
       <div className='bookshelf'>
@@ -34,6 +48,7 @@ class BookShelf extends React.Component {
 export default BookShelf
 
 BookShelf.propTypes = {
-  shelfContents: PropTypes.array.isRequired,
+  handleMovingBooks: PropTypes.func.isRequired,
+  shelfContents: PropTypes.array.isRequired,  // is an array of just book ids, use getBook to query for full book details
   shelfTitle: PropTypes.string.isRequired
 }

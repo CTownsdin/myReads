@@ -80,7 +80,10 @@ A book example JSON object
 `$ npm run start` or `$ yarn start`    
 
 ### TODO Next:
-fetching books from BooksAPI
+---impliment moving book from shelf to shelf---
+there's probably help in here:  https://stackoverflow.com/questions/35537229/how-to-update-parents-state-in-react
+
+
 routing
 
 ### ideas for extras

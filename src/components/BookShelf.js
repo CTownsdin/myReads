@@ -1,12 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
 
 class BookShelf extends React.Component {  // Could this be a SFC ?
-  constructor (props) {
-    super(props)
-  }
 
   render () {
     const bookElements = this.props.shelfContents.map((book) => (    // for each bookObject create an element

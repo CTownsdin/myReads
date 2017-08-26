@@ -7,7 +7,7 @@ const Home = (props) => {
   const currBooks = props.allBooks.filter((book) => book.shelf === 'currentlyReading')
   const wantBooks = props.allBooks.filter((book) => book.shelf === 'wantToRead')
   const readBooks = props.allBooks.filter((book) => book.shelf === 'read')
-
+  
   return (
     <div className='list-books'>
       <div className='list-books-title'>
@@ -38,5 +38,4 @@ export default Home;
 Home.propTypes = {
   allBooks: PropTypes.array.isRequired,
   updateShelf: PropTypes.func.isRequired
-
 }

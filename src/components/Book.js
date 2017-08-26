@@ -2,9 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class Book extends React.Component{
-  constructor(props){
-    super(props)
-  }
 
   render(){
     const { bookData, updateShelf } = this.props

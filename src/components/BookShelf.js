@@ -11,12 +11,12 @@ class BookShelf extends React.Component {  // Could this be a SFC ?
   render () {
     const bookElements = this.props.shelfContents.map((book) => (    // for each bookObject create an element
       <li key={book.id}>
-        <Book bookData={book} handleMovingBooks={this.props.handleMovingBooks}/>
+        <Book bookData={book} updateShelf={this.props.updateShelf}/>
       </li>
     ))
 
     const { shelfTitle } = this.props
-    
+
     return (
       <div className='bookshelf'>
         <h2 className='bookshelf-title'>{ shelfTitle }</h2>
@@ -33,7 +33,7 @@ class BookShelf extends React.Component {  // Could this be a SFC ?
 export default BookShelf
 
 BookShelf.propTypes = {
-  handleMovingBooks: PropTypes.func.isRequired,
+  updateShelf: PropTypes.func.isRequired,
   shelfContents: PropTypes.array.isRequired,  // array of book objects
   shelfTitle: PropTypes.string.isRequired
 }

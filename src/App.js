@@ -10,7 +10,7 @@ class App extends React.Component {
       showSearchPage: true,
       allBooks: []
     }
-    this.handleMovingBooks = this.handleMovingBooks.bind(this)
+    this.updateShelf = this.updateShelf.bind(this)
   }
 
   componentDidMount() {
@@ -20,8 +20,17 @@ class App extends React.Component {
       })
   }
 
-  handleMovingBooks(){
-    console.log('imagine moving books')
+  updateShelf(book, newShelf) {
+    BooksAPI.update(book, newShelf)
+    .then((res) => {    //  since we know it moved, ignore the res and change the shelf on book manually, 
+      book.shelf = newShelf
+      this.setState((state) => ({    // new state is the same as the old state, except this one book has changed
+        allBooks: state.allBooks.filter(b => b.id !== book.id).concat([book])
+      }))
+    })
+    .catch((err) => {
+      console.log(`updateShelf error! - ${err}`)
+    })
   }
 
   render() {
@@ -30,7 +39,7 @@ class App extends React.Component {
     const currBooks = allBooks.filter((book) => book.shelf === 'currentlyReading')
     const wantBooks = allBooks.filter((book) => book.shelf === 'wantToRead')
     const readBooks = allBooks.filter((book) => book.shelf === 'read')
-    
+
     return (
       <div className='app'>
         {this.state.showSearchPage ? (
@@ -52,15 +61,15 @@ class App extends React.Component {
               </div>
               <div className='list-books-content'>
                 <div>
-                  <BookShelf shelfContents={currBooks} 
-                    shelfTitle='Currently Reading' 
-                    handleMovingBooks={this.handleMovingBooks} />
-                  <BookShelf shelfContents={wantBooks} 
-                    shelfTitle='Want to Read' 
-                    handleMovingBooks={this.handleMovingBooks} />
-                  <BookShelf shelfContents={readBooks} 
-                    shelfTitle='Read' 
-                    handleMovingBooks={this.handleMovingBooks} />
+                  <BookShelf shelfContents={currBooks}
+                    shelfTitle='Currently Reading'
+                    updateShelf={this.updateShelf} />
+                  <BookShelf shelfContents={wantBooks}
+                    shelfTitle='Want to Read'
+                    updateShelf={this.updateShelf} />
+                  <BookShelf shelfContents={readBooks}
+                    shelfTitle='Read'
+                    updateShelf={this.updateShelf} />
                 </div>
               </div>
               <div className='open-search'>

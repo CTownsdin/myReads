@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
+import { Link } from 'react-router-dom'
 
 const Home = (props) => {
   const currBooks = props.allBooks.filter((book) => book.shelf === 'currentlyReading')
@@ -24,6 +25,9 @@ const Home = (props) => {
             shelfTitle='Read'
             updateShelf={props.updateShelf} />
         </div>
+      </div>
+      <div className='open-search'>
+        <Link to='/search'>Add a book</Link>
       </div>
     </div>
   )

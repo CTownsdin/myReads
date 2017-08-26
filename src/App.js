@@ -43,9 +43,6 @@ class App extends React.Component {
       <div className='app'>
         <Route exact path='/' render={() => (<Home allBooks={allBooks} updateShelf={this.updateShelf} />)} />
         <Route path='/search' render={() => (<Search />)} />
-        <div className='open-search'>
-          {/* <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>   FIX ME */}
-        </div>
       </div>
     )
   }

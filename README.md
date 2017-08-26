@@ -82,3 +82,5 @@ A book example JSON object
 ### ideas for extras
 book animations
 book details page
+
+## TODO NEXT

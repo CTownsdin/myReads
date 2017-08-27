@@ -84,5 +84,16 @@ book animations
 book details page
 
 ## TODO NEXT
-link from page to page
+when books are shown, their default selector is wrong, when they are none on search page, they should show none.
 
+
+
+
+bug:
+The Linux Command Line - Book is in the DB 3 times!  :)  needs handling  :)  
+
+
+
+finally {
+    [] - lockdown all npm deps versions
+}

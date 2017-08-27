@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 import { Link } from 'react-router-dom'
 
-const Home = (props) => {
+const HomePage = (props) => {
   const currBooks = props.allBooks.filter((book) => book.shelf === 'currentlyReading')
   const wantBooks = props.allBooks.filter((book) => book.shelf === 'wantToRead')
   const readBooks = props.allBooks.filter((book) => book.shelf === 'read')
@@ -33,9 +33,9 @@ const Home = (props) => {
   )
 }
 
-export default Home;
+export default HomePage;
 
-Home.propTypes = {
+HomePage.propTypes = {
   allBooks: PropTypes.array.isRequired,
   updateShelf: PropTypes.func.isRequired
 }

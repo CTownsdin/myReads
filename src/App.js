@@ -1,8 +1,8 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import Home from './components/Home'
-import Search from './components/Search'
+import HomePage from './components/HomePage'
+import SearchPage from './components/SearchPage'
 import { Route } from 'react-router-dom'
 
 class App extends React.Component {
@@ -39,8 +39,8 @@ class App extends React.Component {
 
     return (
       <div className='app'>
-        <Route exact path='/' render={() => (<Home allBooks={allBooks} updateShelf={this.updateShelf} />)} />
-        <Route path='/search' render={() => (<Search />)} />
+        <Route exact path='/' render={() => (<HomePage allBooks={allBooks} updateShelf={this.updateShelf} />)} />
+        <Route path='/search' render={() => (<SearchPage updateShelf={this.updateShelf} />)} />
       </div>
     )
   }

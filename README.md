@@ -1,5 +1,5 @@
 ## How to run this app
-`$ npm install`
+`$ npm install`    
 `$ npm start`
 
 ## Backend Server

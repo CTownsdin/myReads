@@ -2,22 +2,25 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import DebounceInput from 'react-debounce-input'
 import PropTypes from 'prop-types'
-import { search } from '../BooksAPI'
+import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
 
 class SearchPage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { searchResults: [] }
+    this.state = {
+      searchResults: [],
+    }
     this.handleSearch = this.handleSearch.bind(this)
   }
 
   handleSearch(searchStr) {
-    search(searchStr, 20)    // choosing maxResults = 20
-      .then((booksList) => {
-        this.setState({ searchResults: booksList })
-      })
-      .catch(err => console.error(`handleSearch err - ${err}`))
+    BooksAPI.search(searchStr, 20)    // maxResults = 20
+      .then((books) => books.map(b => b.id))
+      .then((ids) => ids.map((id) => BooksAPI.get(id)))   // need to get the version of the books with the .shelf property on them
+      .then((booksPromises) => Promise.all(booksPromises))
+      .then((books) => this.setState({ searchResults: books }))
+      .catch((err) => console.warn(`handleSearch err - ${err}`))
   }
 
   render() {
@@ -54,5 +57,5 @@ class SearchPage extends React.Component {
 export default SearchPage
 
 SearchPage.propTypes = {
-  updateShelf: PropTypes.func.isRequired
+  updateShelf: PropTypes.func.isRequired,
 }

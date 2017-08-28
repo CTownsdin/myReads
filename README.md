@@ -81,7 +81,7 @@ A book example JSON object
 ```
 
 ### ideas for extras
-book animations
-book details page
-if a book is already on a shelf, then when it comes up in search results, it should show a status icon on it.
-a bug: The Linux Command Line - Book is in the DB 3 times, this could be checked for
+book animations    
+book details page    
+if a book is already on a shelf, then when it comes up in search results, it should show a status icon on it.    
+a bug: The Linux Command Line - Book is in the DB 3 times, this could be checked for   

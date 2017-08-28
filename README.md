@@ -2,7 +2,7 @@
 `$ npm install`    
 `$ npm start`
 
-## Backend Server
+## Backend Server - notes
 To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
 
 ### `getAll()`
@@ -29,6 +29,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## a Book JSON
 A book example JSON object    
+```
 {
     "title": "The Linux Command Line",
     "subtitle": "A Complete Introduction",
@@ -77,21 +78,10 @@ A book example JSON object
     "id": "nggnmAEACAAJ",
     "shelf": "currentlyReading"
   }
-
-## running the program
-`$ npm install` or `$ yarn install`   
-`$ npm run start` or `$ yarn start`    
+```
 
 ### ideas for extras
 book animations
 book details page
 if a book is already on a shelf, then when it comes up in search results, it should show a status icon on it.
-
-## TODO NEXT
-
-
-bug: The Linux Command Line - Book is in the DB 3 times!  :)  needs handling  :)  
-
-finally {
-    [] - lockdown all npm deps versions
-}
+a bug: The Linux Command Line - Book is in the DB 3 times, this could be checked for

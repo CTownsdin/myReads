@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 import Book from './Book'
 
 class BookShelf extends React.Component {
-
   // TODO:  extract a createBookElements utility?
   // use in BookShelf and also on Search page.
 
   render () {
     const bookElements = this.props.shelfContents.map((book) => (
       <li key={book.id}>
-        <Book bookData={book} updateShelf={this.props.updateShelf}/>
+        <Book bookData={book} updateShelf={this.props.updateShelf} />
       </li>
     ))
 

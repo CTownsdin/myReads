@@ -6,7 +6,7 @@ import SearchPage from './components/SearchPage'
 import { Route } from 'react-router-dom'
 
 class App extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       allBooks: []
@@ -14,16 +14,16 @@ class App extends React.Component {
     this.updateShelf = this.updateShelf.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     BooksAPI.getAll()
       .then((allBooks) => {
         this.setState({ allBooks })
       })
   }
 
-  updateShelf(book, newShelf) {
+  updateShelf (book, newShelf) {
     BooksAPI.update(book, newShelf)
-      .then((res) => {    //  since we know it moved, ignore the res and change the shelf on book manually, 
+      .then((res) => {    //  since we know it moved, ignore the res and change the shelf on book manually,
         book.shelf = newShelf
         this.setState((state) => ({    // new state is the same as the old state, except this one book has changed
           allBooks: state.allBooks.filter(b => b.id !== book.id).concat([book])
@@ -34,7 +34,7 @@ class App extends React.Component {
       })
   }
 
-  render() {
+  render () {
     const { allBooks } = this.state
 
     return (

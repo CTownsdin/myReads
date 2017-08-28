@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class Book extends React.Component{
-
-  render(){
+class Book extends React.Component {
+  render () {
     const { bookData, updateShelf } = this.props
     return (
       <div className='book'>

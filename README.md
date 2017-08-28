@@ -82,17 +82,12 @@ A book example JSON object
 ### ideas for extras
 book animations
 book details page
+if a book is already on a shelf, then when it comes up in search results, it should show a status icon on it.
 
 ## TODO NEXT
-when books are shown, their default selector is wrong, when they are none on search page, they should show none.
 
 
-
-
-bug:
-The Linux Command Line - Book is in the DB 3 times!  :)  needs handling  :)  
-
-
+bug: The Linux Command Line - Book is in the DB 3 times!  :)  needs handling  :)  
 
 finally {
     [] - lockdown all npm deps versions

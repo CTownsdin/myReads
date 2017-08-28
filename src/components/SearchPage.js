@@ -6,30 +6,30 @@ import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
 
 class SearchPage extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
-      searchResults: [],
+      searchResults: []
     }
     this.handleSearch = this.handleSearch.bind(this)
   }
 
-  handleSearch(searchStr) {
+  handleSearch (searchStr) {
     BooksAPI.search(searchStr, 20)    // maxResults = 20
       .then((books) => books.map(b => b.id))
       .then((ids) => ids.map((id) => BooksAPI.get(id)))   // need to get the version of the books with the .shelf property on them
       .then((booksPromises) => Promise.all(booksPromises))
-      .then((books) => this.setState({ searchResults: books }))
+      .then((books) => this.setState({ searchResults: books }))  // now that we have all the proper books, set state and render
       .catch((err) => console.warn(`handleSearch err - ${err}`))
   }
 
-  render() {
+  render () {
     const bookElements = this.state.searchResults.map(book =>
       (<li key={book.id}>
         <Book bookData={book} updateShelf={this.props.updateShelf} />
       </li>)
     )
-    console.log(`bookElements - ${bookElements}`);
+    console.log(`bookElements - ${bookElements}`)
 
     return (
       <div className='search-books'>
@@ -57,5 +57,5 @@ class SearchPage extends React.Component {
 export default SearchPage
 
 SearchPage.propTypes = {
-  updateShelf: PropTypes.func.isRequired,
+  updateShelf: PropTypes.func.isRequired
 }

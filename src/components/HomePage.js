@@ -7,7 +7,7 @@ const HomePage = (props) => {
   const currBooks = props.allBooks.filter((book) => book.shelf === 'currentlyReading')
   const wantBooks = props.allBooks.filter((book) => book.shelf === 'wantToRead')
   const readBooks = props.allBooks.filter((book) => book.shelf === 'read')
-  
+
   return (
     <div className='list-books'>
       <div className='list-books-title'>
@@ -33,7 +33,7 @@ const HomePage = (props) => {
   )
 }
 
-export default HomePage;
+export default HomePage
 
 HomePage.propTypes = {
   allBooks: PropTypes.array.isRequired,

@@ -1,5 +1,8 @@
-## Backend Server
+## How to run this app
+`$ npm install`
+`$ npm start`
 
+## Backend Server
 To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
 
 ### `getAll()`
